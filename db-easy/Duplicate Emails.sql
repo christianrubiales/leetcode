@@ -1,0 +1,1 @@
+SELECT G.E FROM (SELECT COUNT(Email) AS C, Email AS E FROM Person GROUP BY Email) AS G WHERE C > 1;
