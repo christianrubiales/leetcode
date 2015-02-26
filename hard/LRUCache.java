@@ -8,8 +8,8 @@ public class LRUCache {
 	
     public LRUCache(int capacity) {
     	final int max = capacity;
-    	this.map = new LinkedHashMap<Integer, Integer>() {
-    		@Override
+    	// initial capacity, default load factor, true - access order (false - insertion order)
+    	this.map = new LinkedHashMap<Integer, Integer>(capacity, 0.75f, true) {
     		protected boolean removeEldestEntry(Map.Entry<Integer, Integer> entry) {
     			return size() > max;
     		}
@@ -17,21 +17,10 @@ public class LRUCache {
     }
     
     public int get(int key) {
-    	int value = -1;
-    	
-    	if (map.containsKey(key)) {
-    		value = map.remove(key);
-    		map.put(key, value);
-    	}
-    	
-    	return value;
+    	return map.containsKey(key) ? map.get(key) : -1;
     }
     
     public void set(int key, int value) {
-    	if (map.containsKey(key)) {
-            this.map.put(key, value);
-    		map.remove(key);
-    	}
 		map.put(key, value);
     }
 
