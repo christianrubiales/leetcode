@@ -11,12 +11,14 @@ public class LongestCommonPrefix {
         int c = 0;
         int min = strs.length > 0 ? Integer.MAX_VALUE : 0;
         
+        // get the length of the shortest string
         for (int i = 0; i < strs.length; i++) {
             if (strs[i].length() < min) {
                 min = strs[i].length();
             }
         }
         
+        // just keep comparing until a mismatch is found
         for (int i = 0; i < min; i++) {
             boolean b = true;
             if (strs.length > 0) {
