@@ -23,7 +23,7 @@ public class TwoSum {
     }
     
 	public static void main(String[] args) {
-//		System.out.println(Arrays.deepToString(twoSum(new int[]{0,4,3,0}, 0)));
+		System.out.println(Arrays.deepToString(twoSum(new int[]{0,4,3,0}, 0)));
 		System.out.println(Arrays.deepToString(twoSum(new int[]{3,2,4}, 6)));
 	}
 
