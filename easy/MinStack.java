@@ -5,37 +5,38 @@ import java.util.*;
  */
 public class MinStack {
 
-    private final Deque<Integer> stack = new ArrayDeque<Integer>();
-    private final Deque<Integer> min = new ArrayDeque<Integer>();
-    
-    public void push(int x) {
-        stack.push(x);
-        if (min.isEmpty()) {
-        	min.push(x);
-        } else {
-        	min.push(x < getMin() ? x : getMin());
-        }
-    }
+	private final Deque<Integer> stack = new ArrayDeque<Integer>();
+	private final Deque<Integer> min = new ArrayDeque<Integer>();
 
-    public void pop() {
-        stack.pop();
-        min.pop();
-    }
+	public void push(int x) {
+		stack.push(x);
 
-    public int top() {
-    	return stack.peek();
-    }
+		if (min.isEmpty()) {
+			min.push(x);
+		} else {
+			min.push(x < min.peek() ? x : min.peek());
+		}
+	}
 
-    public int getMin() {
-        return min.peek();
-    }
-    
+	public void pop() {
+		stack.pop();
+		min.pop();
+	}
+
+	public int top() {
+		return stack.peek();
+	}
+
+	public int getMin() {
+		return min.peek();
+	}
+
 	public static void main(String[] args) {
 		// test 1
-//		MinStack minStack = new MinStack();
-//		minStack.push(-3);
-//		System.out.println(minStack.getMin());
-		
+		// MinStack minStack = new MinStack();
+		// minStack.push(-3);
+		// System.out.println(minStack.getMin());
+
 		// test 2
 		MinStack minStack = new MinStack();
 		minStack.push(2);
