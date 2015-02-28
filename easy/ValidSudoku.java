@@ -1,17 +1,26 @@
+import java.util.HashSet;
+import java.util.Set;
+
+
+/**
+ * Compare by rows, by columns, and don't forget to compare the sub-grids.
+ * Best solution so far is using HashSet, as compared to using BitSet.
+ * Using boolean array is the worst of the three, but not by much.
+ */
 public class ValidSudoku {
 
     public static boolean isValidSudoku(char[][] board) {
-        boolean[] set;
+        Set<Character> set;
         
         // check rows
         for (int i = 0; i < board.length; i++) {
-            set = new boolean[10];
+            set = new HashSet<Character>();
             for (int j = 0; j < board[i].length; j++) {
             	if (board[i][j] != '.') {
-            		if (set[board[i][j] - '0']) {
+            		if (set.contains(board[i][j])) {
 	            		return false;
 	            	} else {
-	            		set[board[i][j] - '0'] = true;
+	            		set.add(board[i][j]);
 	            	}
             	}
             }
@@ -19,13 +28,13 @@ public class ValidSudoku {
 
         // check columns
         for (int i = 0; i < board.length; i++) {
-            set = new boolean[10];
+            set = new HashSet<Character>();
             for (int j = 0; j < board[i].length; j++) {
             	if (board[j][i] != '.') {
-            		if (set[board[j][i] - '0']) {
+            		if (set.contains(board[j][i])) {
 	            		return false;
 	            	} else {
-	            		set[board[j][i] - '0'] = true;
+	            		set.add(board[j][i]);
 	            	}
             	}
             }
@@ -35,14 +44,14 @@ public class ValidSudoku {
         int sub = board.length / 3;
         for (int i = 0; i < sub; i++) {
             for (int j = 0; j < sub; j++) {
-                set = new boolean[10];
+                set = new HashSet<Character>();
                 for (int m = 0; m < sub ; m++) {
                     for (int n = 0; n < sub ; n++) {
                     	if (board[3*i+m][3*j+n] != '.') {
-                    		if (set[board[3*i+m][3*j+n] - '0']) {
+                    		if (set.contains(board[3*i+m][3*j+n])) {
         	            		return false;
         	            	} else {
-        	            		set[board[3*i+m][3*j+n] - '0'] = true;
+        	            		set.add(board[3*i+m][3*j+n]);
         	            	}
                     	}
                     }
