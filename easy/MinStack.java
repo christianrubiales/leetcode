@@ -6,7 +6,7 @@ import java.util.*;
 public class MinStack {
 
     private final Deque<Integer> stack = new ArrayDeque<Integer>();
-    private final Deque<Integer> min = new LinkedList<Integer>();
+    private final Deque<Integer> min = new ArrayDeque<Integer>();
     
     public void push(int x) {
         stack.push(x);
