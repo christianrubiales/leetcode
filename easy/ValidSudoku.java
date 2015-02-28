@@ -1,20 +1,17 @@
-import java.util.BitSet;
-
-
 public class ValidSudoku {
 
     public static boolean isValidSudoku(char[][] board) {
-        BitSet set;
+        boolean[] set;
         
         // check rows
         for (int i = 0; i < board.length; i++) {
-            set = new BitSet(9);
+            set = new boolean[10];
             for (int j = 0; j < board[i].length; j++) {
             	if (board[i][j] != '.') {
-            		if (set.get(board[i][j])) {
+            		if (set[board[i][j] - '0']) {
 	            		return false;
 	            	} else {
-	            		set.set(board[i][j]);
+	            		set[board[i][j] - '0'] = true;
 	            	}
             	}
             }
@@ -22,13 +19,13 @@ public class ValidSudoku {
 
         // check columns
         for (int i = 0; i < board.length; i++) {
-            set = new BitSet(9);
+            set = new boolean[10];
             for (int j = 0; j < board[i].length; j++) {
             	if (board[j][i] != '.') {
-            		if (set.get(board[j][i])) {
+            		if (set[board[j][i] - '0']) {
 	            		return false;
 	            	} else {
-	            		set.set(board[j][i]);
+	            		set[board[j][i] - '0'] = true;
 	            	}
             	}
             }
@@ -38,14 +35,14 @@ public class ValidSudoku {
         int sub = board.length / 3;
         for (int i = 0; i < sub; i++) {
             for (int j = 0; j < sub; j++) {
-                set = new BitSet(9);
+                set = new boolean[10];
                 for (int m = 0; m < sub ; m++) {
                     for (int n = 0; n < sub ; n++) {
                     	if (board[3*i+m][3*j+n] != '.') {
-                    		if (set.get(board[3*i+m][3*j+n])) {
+                    		if (set[board[3*i+m][3*j+n] - '0']) {
         	            		return false;
         	            	} else {
-        	            		set.set(board[3*i+m][3*j+n]);
+        	            		set[board[3*i+m][3*j+n] - '0'] = true;
         	            	}
                     	}
                     }
