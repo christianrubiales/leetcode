@@ -1,21 +1,20 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.BitSet;
 
 
 public class ValidSudoku {
 
     public static boolean isValidSudoku(char[][] board) {
-        Set<Character> set;
+        BitSet set;
         
         // check rows
         for (int i = 0; i < board.length; i++) {
-            set = new HashSet<Character>();
+            set = new BitSet(9);
             for (int j = 0; j < board[i].length; j++) {
             	if (board[i][j] != '.') {
-            		if (set.contains(board[i][j])) {
+            		if (set.get(board[i][j])) {
 	            		return false;
 	            	} else {
-	            		set.add(board[i][j]);
+	            		set.set(board[i][j]);
 	            	}
             	}
             }
@@ -23,13 +22,13 @@ public class ValidSudoku {
 
         // check columns
         for (int i = 0; i < board.length; i++) {
-            set = new HashSet<Character>();
+            set = new BitSet(9);
             for (int j = 0; j < board[i].length; j++) {
             	if (board[j][i] != '.') {
-            		if (set.contains(board[j][i])) {
+            		if (set.get(board[j][i])) {
 	            		return false;
 	            	} else {
-	            		set.add(board[j][i]);
+	            		set.set(board[j][i]);
 	            	}
             	}
             }
@@ -39,14 +38,14 @@ public class ValidSudoku {
         int sub = board.length / 3;
         for (int i = 0; i < sub; i++) {
             for (int j = 0; j < sub; j++) {
-                set = new HashSet<Character>();
+                set = new BitSet(9);
                 for (int m = 0; m < sub ; m++) {
                     for (int n = 0; n < sub ; n++) {
                     	if (board[3*i+m][3*j+n] != '.') {
-                    		if (set.contains(board[3*i+m][3*j+n])) {
+                    		if (set.get(board[3*i+m][3*j+n])) {
         	            		return false;
         	            	} else {
-        	            		set.add(board[3*i+m][3*j+n]);
+        	            		set.set(board[3*i+m][3*j+n]);
         	            	}
                     	}
                     }
