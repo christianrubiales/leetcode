@@ -1,7 +1,7 @@
 import java.util.*;
 
 /**
- * Just use two stacks.
+ * Use another stack for to keep track of the minimum so far.
  */
 public class MinStack {
 
