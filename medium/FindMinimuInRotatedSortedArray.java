@@ -1,20 +1,28 @@
 
 /**
- * O(n) - linear search
+ * TODO: practice this.
  */
 public class FindMinimuInRotatedSortedArray {
 	
     public int findMin(int[] num) {
-    	int min = num[0];
+    	int low = 0;
+    	int high = num.length - 1;
     	
-    	for (int i = 1; i < num.length; i++) {
-    		if (num[i] < min) {
-    			min = num[i];
-    			break;
+		int mid;
+    	while (low < high) {
+    		if (num[low] < num[high]) {
+    			return num[low];
+    		}
+    		
+    		mid = (low + high) / 2;
+    		if (num[mid] >= num[low]) {
+    			low = mid + 1;
+    		} else {
+    			high = mid;
     		}
     	}
     	
-    	return min;
+    	return num[low];
     }
     
 	public static void main(String[] args) {
