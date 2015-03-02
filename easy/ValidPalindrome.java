@@ -1,30 +1,38 @@
 
 /**
- * Straightforward but O(n) space.
+ * TRicky to implement O(1) space. The O(n) space implementation is straightforward.
  */
 public class ValidPalindrome {
 
     public static boolean isPalindrome(String s) {
-    	StringBuilder u = new StringBuilder();
-    	
-    	for (int i = 0; i < s.length(); i++) {
-    		if (Character.isLetterOrDigit(s.charAt(i))) {
-    			u.append(Character.toLowerCase(s.charAt(i)));
-    		}
-    	}
-    	s = u.toString();
-    	
-    	for (int i = 0; i < s.length() / 2; i ++) {
-    		if (s.charAt(i) != s.charAt(s.length() - 1 - i)) {
-    			return false;
-    		}
-    	}
-    	
-    	return true;
+        int i = 0;
+        int j = s.length() - 1;
+        
+        while (j > i) {
+            while (!Character.isLetterOrDigit(s.charAt(i)) && i < s.length() - 1) {
+                i++;
+            }
+            while (!Character.isLetterOrDigit(s.charAt(j)) && j > 0) {
+                j--;
+            }
+            if (j >= i) {
+            	if (Character.toLowerCase(s.charAt(i)) == Character.toLowerCase(s.charAt(j))) {
+	                i++;
+	                j--;
+            	} else {
+                    return false;
+                }
+            }
+        }
+        
+        return true;
     }
 	
 	public static void main(String[] args) {
 		System.out.println(isPalindrome(".,"));
+		System.out.println(isPalindrome("a."));
+		System.out.println(isPalindrome("aa"));
+		System.out.println(isPalindrome("\"Sue,\" Tom smiles, \"Selim smote us.\""));
 	}
 
 }
