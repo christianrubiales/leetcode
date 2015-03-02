@@ -1,27 +1,26 @@
 
+/**
+ * Straightforward but O(n) space.
+ */
 public class ValidPalindrome {
 
     public static boolean isPalindrome(String s) {
-        int i = 0;
-        int j = s.length() - 1;
-        boolean palindrome = true;
-        
-        while (j > i) {
-            while (!Character.isLetterOrDigit(s.charAt(i)) && i < s.length() - 1) {
-                i++;
-            }
-            while (!Character.isLetterOrDigit(s.charAt(j)) && j > i) {
-                j--;
-            }
-            if (s.charAt(i) == s.charAt(j)) {
-                i++;
-                j--;
-            } else {
-                return false;
-            }
-        }
-        
-        return (s.trim().length() == 0 ? true : (i - j <= 0 ? palindrome : false));
+    	StringBuilder u = new StringBuilder();
+    	
+    	for (int i = 0; i < s.length(); i++) {
+    		if (Character.isLetterOrDigit(s.charAt(i))) {
+    			u.append(Character.toLowerCase(s.charAt(i)));
+    		}
+    	}
+    	s = u.toString();
+    	
+    	for (int i = 0; i < s.length() / 2; i ++) {
+    		if (s.charAt(i) != s.charAt(s.length() - 1 - i)) {
+    			return false;
+    		}
+    	}
+    	
+    	return true;
     }
 	
 	public static void main(String[] args) {
