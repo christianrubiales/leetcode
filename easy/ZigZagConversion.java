@@ -2,6 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * FIXME
+ */
 public class ZigZagConversion {
 
     public String convert(String s, int nRows) {
