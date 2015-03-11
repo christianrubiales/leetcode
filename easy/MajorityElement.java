@@ -1,4 +1,7 @@
 
+/**
+ * Boyer-Moore
+ */
 public class MajorityElement {
 
     public static int majorityElement(int[] num) {
