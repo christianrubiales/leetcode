@@ -2,11 +2,6 @@
 
 public class LongestCommonPrefix {
 
-	public static void main(String[] args) {
-//		System.out.println(longestCommonPrefix(new String[]{}));
-		System.out.println(longestCommonPrefix(new String[]{"12345", "12354", "123745464"}));
-	}
-
     public static String longestCommonPrefix(String[] strs) {
         int c = 0;
         int min = strs.length > 0 ? Integer.MAX_VALUE : 0;
@@ -39,4 +34,9 @@ public class LongestCommonPrefix {
         
         return strs.length > 0 ? strs[0].substring(0, c) : "";
     }
+
+	public static void main(String[] args) {
+//		System.out.println(longestCommonPrefix(new String[]{}));
+		System.out.println(longestCommonPrefix(new String[]{"12345", "12354", "123745464"}));
+	}
 }
