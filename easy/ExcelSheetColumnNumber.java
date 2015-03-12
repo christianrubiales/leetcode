@@ -20,6 +20,8 @@ public class ExcelSheetColumnNumber {
 		System.out.println(titleToNumber("AA"));//27
 		System.out.println(titleToNumber("AB"));//28
 		System.out.println(titleToNumber("BA"));//53
+		System.out.println(titleToNumber("AAA"));//703
+		System.out.println(titleToNumber("AAAA"));//18279
 	}
 
 }
