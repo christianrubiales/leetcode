@@ -1,4 +1,7 @@
 
+/**
+ * Reversing does not work because it modifies the structures.
+ */
 public class IntersectionOfTwoLinkedLists {
 
     public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
