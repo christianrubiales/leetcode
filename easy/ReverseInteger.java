@@ -16,9 +16,9 @@ public class ReverseInteger {
 	public static void main(String[] args) {
 		System.out.println(reverse(123));//321
 		System.out.println(reverse(-123));//-321
-		System.out.println(reverse(1534236469));//9646324351
-		System.out.println(reverse(-2147483648));
-		System.out.println(reverse(1534236469));
+		System.out.println(reverse(1534236469));//0
+		System.out.println(reverse(-2147483648));//0
+		System.out.println(reverse(1534236469));//0
 	}
 
 }
