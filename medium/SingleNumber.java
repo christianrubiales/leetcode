@@ -1,8 +1,11 @@
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
- * O(nlogn) because of sorting
+ * Two passes but O(n) using HashMap.
+ * Actually gets Time Limit Exceeded, unlike the O(nlogn) using sorting, 
+ * probably because of the HashMap and Autoboxing and Unboxing.
  */
 public class SingleNumber {
     
@@ -11,12 +14,20 @@ public class SingleNumber {
             return A[0];
         }
         
-        Arrays.sort(A);
+        int num = 1;
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for (int a : A) {
+        	Integer i = map.get(a);
+        	if (i == null) {
+        		i = 0;
+        	}
+        	i++;
+        	map.put(a, i);
+        }
         
-        int num = -1;
-        for (int i = 0; i < A.length; i+=2) {
-        	if (i == A.length - 1 || A[i] != A[i+1]) {
-        		num = A[i];
+        for (int a : A) {
+        	if (map.get(a) == 1) {
+        		num = a;
         		break;
         	}
         }
