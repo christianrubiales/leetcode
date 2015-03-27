@@ -15,7 +15,7 @@ public class SingleNumber {
         }
         
         int num = 1;
-        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>(A.length);
         for (int a : A) {
         	Integer i = map.get(a);
         	if (i == null) {
