@@ -1,15 +1,22 @@
 
-/**
- * FIXME
- */
 public class CountAndSay {
 
     public static String countAndSay(int n) {
+    	
+    	if (n == 1) {
+    		return "1";
+    	}
+    	String t = "1";
+    	for (int i = 1; i < n; i++) {
+    		t = countAndSay(t);
+    	}
+    	
+    	return t;
+    }
+    
+    public static String countAndSay(String n) {
         StringBuilder sb = new StringBuilder();
-        char[] array = Integer.toString(n).toCharArray();
-        if (array.length == 1 && array[0] == '1') {
-        	return "1";
-        }
+        char[] array = n.toCharArray();
         
         char prev = '0';
         int count = 0;
@@ -33,10 +40,9 @@ public class CountAndSay {
     }
     
 	public static void main(String[] args) {
-		System.out.println(countAndSay(1));//1
-		System.out.println(countAndSay(11));//21
-		System.out.println(countAndSay(21));//1211
-		System.out.println(countAndSay(1211));//111221
+		for (int i = 1; i <= 10; i++) {
+			System.out.println(countAndSay(i));
+		}
 	}
 
 }
