@@ -14,8 +14,11 @@ public class ReverseWords {
     
 	public static void main(String[] args) {
 		System.out.println(reverseWords(""));
+		System.out.println(reverseWords("     "));
+		System.out.println(reverseWords("a"));
 		System.out.println(reverseWords("  a    b  "));
 		System.out.println(reverseWords("a b c"));
+		System.out.println(reverseWords("a1 b1 c1"));
 	}
 
 }
