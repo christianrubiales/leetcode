@@ -6,7 +6,7 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-class Solution {
+class DeleteNodeInALinkedList {
 public:
     void deleteNode(ListNode* node) {
         if (node != NULL) {
