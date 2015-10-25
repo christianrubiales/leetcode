@@ -1,4 +1,7 @@
 
+/**
+ * @see https://en.wikipedia.org/wiki/Digital_root
+ */
 public class AddDigitsConstant {
 
     public static int addDigits(int num) {
