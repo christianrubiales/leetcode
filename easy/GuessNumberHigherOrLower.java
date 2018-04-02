@@ -20,4 +20,9 @@ public class GuessNumberHigherOrLower {
             }
         }
     }
+
+	private int guess(int mid) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
