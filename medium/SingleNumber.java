@@ -1,6 +1,7 @@
-
-
 /**
+ * Find number that appears odd number of times.
+ * (Sometimes: find number that appear only once, all others appear twice)
+ * 
  * O(n) using XOR.
  */
 public class SingleNumber {

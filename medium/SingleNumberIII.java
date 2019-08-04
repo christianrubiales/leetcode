@@ -1,10 +1,16 @@
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Find numbers that appear odd number of times.
+ * (Sometimes: find numbers that appear only once, all others appear twice)
+ * 
+ * O(n) using set.
+ */
 public class SingleNumberIII {
 
     public int[] singleNumber(int[] nums) {
-        Set<Integer> set = new HashSet<Integer>();
+        Set<Integer> set = new HashSet<>();
         
         for (int i : nums) {
             if (set.contains(i)) {

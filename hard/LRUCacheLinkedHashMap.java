@@ -6,12 +6,12 @@ public class LRUCacheLinkedHashMap {
 
 	private final LinkedHashMap<Integer, Integer> map;
 	
-    public LRUCacheLinkedHashMap(int capacity) {
-    	final int max = capacity;
+    public LRUCacheLinkedHashMap(final int capacity) {
+//    	final int max = capacity;
     	// initial capacity, default load factor, true - access order (false - insertion order)
     	this.map = new LinkedHashMap<Integer, Integer>(capacity, 0.75f, true) {
     		protected boolean removeEldestEntry(Map.Entry<Integer, Integer> entry) {
-    			return size() > max;
+    			return size() > capacity;
     		}
     	};
     }
@@ -46,7 +46,7 @@ public class LRUCacheLinkedHashMap {
 		System.out.println(cache.get(1));
 		System.out.println(cache.get(2));
 		System.out.println();
-		// 1, 3
+		// -1, 3
 		
 		// test 3
 		cache = new LRUCacheLinkedHashMap(2);

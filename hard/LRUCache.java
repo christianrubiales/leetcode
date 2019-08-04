@@ -27,35 +27,6 @@ public class LRUCache {
 		tail.prev = head;
 	}
 	
-	public int get(int key) {
-		Node node = map.get(key);
-		if (node != null) {
-			update(node);
-			return node.value;
-		}
-		
-		return -1;
-	}
-	
-	public void set(int key, int value) {
-		Node node = map.get(key);
-		if (node != null) {
-			node.value = value;
-			update(node);
-		} else {
-			Node newNode = new Node(key, value);
-			map.put(key, newNode);
-			if (size == count) {
-				map.remove(tail.prev.key);
-				remove(tail.prev);
-				addFirst(newNode);
-			} else {
-				addFirst(newNode);
-				count++;
-			}
-		}
-	}
-	
 	private void remove(Node node) {
 		Node before = node.prev;
 		Node after = node.next;
@@ -71,10 +42,41 @@ public class LRUCache {
 		node.next = after;
 	}
 	
-	private void update(Node node) {
-		remove(node);
-		addFirst(node);
+	public int get(int key) {
+		Node node = map.get(key);
+		if (node != null) {
+			remove(node);
+			addFirst(node);
+			return node.value;
+		}
+		
+		return -1;
 	}
+	
+	public void set(int key, int value) {
+		Node node = map.get(key);
+		if (node != null) {
+			node.value = value;
+			remove(node);
+			addFirst(node);
+		} else {
+			Node newNode = new Node(key, value);
+			map.put(key, newNode);
+			if (size == count) {
+				map.remove(tail.prev.key);
+				remove(tail.prev);
+				addFirst(newNode);
+			} else {
+				addFirst(newNode);
+				count++;
+			}
+		}
+	}
+	
+//	private void update(Node node) {
+//		remove(node);
+//		addFirst(node);
+//	}
 
 	public static void main(String[] args) {
 		LRUCache cache = null;
