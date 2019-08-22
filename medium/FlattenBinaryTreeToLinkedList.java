@@ -4,17 +4,26 @@ import java.util.LinkedList;
  * Use preorder traversal and temporary linked list.
  */
 public class FlattenBinaryTreeToLinkedList {
+	
+	static class Node {
+		int val;
+		Node left;
+		Node right;
+	
+		Node(int x) {
+			val = x;
+		}
+	}
 
-	private LinkedList<TreeNode> list = new LinkedList<>();
-
-    public void flatten(TreeNode root) {
+    public LinkedList<Node> flatten(Node root) {
+    	LinkedList<Node> list = new LinkedList<>();
     	if (root != null) {
-    		preOrder(root);
+    		preOrder(root, list);
     		
     		if (!list.isEmpty()) {
-		        TreeNode current = list.get(0);
+		        Node current = list.get(0);
 		        root = current;
-		        TreeNode next;
+		        Node next;
 		        for (int i = 1; i < list.size(); i++) {
 		        	next = list.get(i);
 		        	current.right = next;
@@ -23,52 +32,51 @@ public class FlattenBinaryTreeToLinkedList {
 		        }
     		}
     	}
+    	
+    	return list;
     }
 	
-    public void preOrder(TreeNode root) {
+    public void preOrder(Node root, LinkedList<Node> list) {
     	if (root != null) {
     		list.add(root);
-    		preOrder(root.left);
-    		preOrder(root.right);
+    		preOrder(root.left, list);
+    		preOrder(root.right, list);
     	}
+    }
+    
+    private static void print(LinkedList<Node> list) {
+    	for (Node node : list) {
+    		System.out.print(node.val + ", ");
+    	}
+    	System.out.println();
     }
     
 	public static void main(String[] args) {
 		FlattenBinaryTreeToLinkedList flatten = new FlattenBinaryTreeToLinkedList();
 
-		TreeNode root = new TreeNode(1);
-		root.left = null;
-		root.right = new TreeNode(2);
-		flatten.flatten(root);
+//		Node root = new Node(1);
+//		root.left = null;
+//		root.right = new Node(2);
+//		print(flatten.flatten(root));
 		
 		// 1
-//		TreeNode root = new TreeNode(1);
-//		root.left = new TreeNode(2);
-//		root.right = new TreeNode(5);
+//		Node root = new Node(1);
+//		root.left = new Node(2);
+//		root.right = new Node(5);
 //		
-//		TreeNode node = root.left;
-//		node.left = new TreeNode(3);
-//		node.right = new TreeNode(4);
+//		Node node = root.left;
+//		node.left = new Node(3);
+//		node.right = new Node(4);
 //		
-//		root.right.right = new TreeNode(6);
+//		root.right.right = new Node(6);
 //	
-//		flatten.flatten(root);
+//		print(flatten.flatten(root));
 		
 		// 2
-//		TreeNode root = new TreeNode(1);
-//		root.left = new TreeNode(2);
+//		Node root = new Node(1);
+//		root.left = new Node(2);
 //		
-//		flatten.flatten(null);
+//		print(flatten.flatten(null));
 	}
 
-}
-
-class TreeNode {
-	int val;
-	TreeNode left;
-	TreeNode right;
-
-	TreeNode(int x) {
-		val = x;
-	}
 }

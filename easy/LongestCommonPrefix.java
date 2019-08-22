@@ -2,37 +2,37 @@
 
 public class LongestCommonPrefix {
 
-    public static String longestCommonPrefix(String[] strs) {
-        int c = 0;
-        int min = strs.length > 0 ? Integer.MAX_VALUE : 0;
+    public static String longestCommonPrefix(String[] strings) {
+        int length = 0;
+        int min = strings.length > 0 ? Integer.MAX_VALUE : 0;
         
         // get the length of the shortest string
-        for (int i = 0; i < strs.length; i++) {
-            if (strs[i].length() < min) {
-                min = strs[i].length();
+        for (int i = 0; i < strings.length; i++) {
+            if (strings[i].length() < min) {
+                min = strings[i].length();
             }
         }
         
         // just keep comparing until a mismatch is found
         for (int i = 0; i < min; i++) {
-            boolean b = true;
-            if (strs.length > 0) {
-                char ch = strs[0].charAt(i);
-                for (int j = 1; j < strs.length; j++) {
-                    if (ch != strs[j].charAt(i)) {
-                    	b = false;
+            boolean matches = true;
+            if (strings.length > 0) {
+                char ch = strings[0].charAt(i);
+                for (int j = 1; j < strings.length; j++) {
+                    if (ch != strings[j].charAt(i)) {
+                    	matches = false;
                         break;
                     }
                 }
-                if (b) {
-                    c++;
+                if (matches) {
+                    length++;
                 } else {
                 	break;
                 }
             }
         }
         
-        return strs.length > 0 ? strs[0].substring(0, c) : "";
+        return strings.length > 0 ? strings[0].substring(0, length) : "";
     }
 
 	public static void main(String[] args) {
