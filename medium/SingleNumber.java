@@ -11,13 +11,13 @@ public class SingleNumber {
 			throw new IllegalArgumentException("input must not be null or empty");
 		}
 		
-		int num = numbers[0];
+		int number = numbers[0];
 
 		for (int i = 1; i < numbers.length; i++) {
-			num ^= numbers[i];
+			number ^= numbers[i];
 		}
         
-        return num;
+        return number;
     }
     
 	public static void main(String[] args) {

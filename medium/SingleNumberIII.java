@@ -9,10 +9,14 @@ import java.util.Set;
  */
 public class SingleNumberIII {
 
-    public int[] singleNumber(int[] nums) {
+    public int[] singleNumber(int[] numbers) {
+		if (numbers == null) {
+			throw new IllegalArgumentException("input must not be null");
+		}
+
         Set<Integer> set = new HashSet<>();
         
-        for (int i : nums) {
+        for (int i : numbers) {
             if (set.contains(i)) {
                 set.remove(i);
             } else {
