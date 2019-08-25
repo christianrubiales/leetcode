@@ -6,11 +6,15 @@
  */
 public class SingleNumber {
     
-	public static int singleNumber(int[] A) {
-		int num = A[0];
+	public static int singleNumber(int[] numbers) {
+		if (numbers == null || numbers.length == 0) {
+			throw new IllegalArgumentException("input must not be null or empty");
+		}
 		
-		for (int i = 1; i < A.length; i++) {
-			num ^= A[i];
+		int num = numbers[0];
+
+		for (int i = 1; i < numbers.length; i++) {
+			num ^= numbers[i];
 		}
         
         return num;
