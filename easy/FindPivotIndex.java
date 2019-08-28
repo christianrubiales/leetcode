@@ -1,26 +1,29 @@
 
 public class FindPivotIndex {
 	
-    public static int pivotIndex(int[] nums) {
-    	
-    	int prefix = 0;
-    	int suffix = 0;
-    	
-    	for (int i : nums) {
-    		suffix += i;
-    	}
-    	
-    	for (int i = 0; i < nums.length; i++) {
-    		suffix -= nums[i];
-    		
-    		if (prefix == suffix) {
-    			return i;
+    public static int pivotIndex(int[] numbers) {
+    		if (numbers == null) {
+    			throw new IllegalArgumentException("input must not be null");
     		}
-    		
-    		prefix += nums[i];
-    	}
     	
-    	return -1;
+	    	int prefixSum = 0;
+	    	int suffixSum = 0;
+	    	
+	    	for (int number : numbers) {
+	    		suffixSum += number;
+	    	}
+	    	
+	    	for (int i = 0; i < numbers.length; i++) {
+	    		suffixSum -= numbers[i];
+	    		
+	    		if (prefixSum == suffixSum) {
+	    			return i;
+	    		}
+	    		
+	    		prefixSum += numbers[i];
+	    	}
+	    	
+	    	return -1;
     }
 
 	public static void main(String[] args) {
@@ -38,6 +41,8 @@ public class FindPivotIndex {
 
 		A = new int[] {};
 		System.out.println(pivotIndex(A));//-1
+		
+		System.out.println(pivotIndex(null));
 
 	}
 
