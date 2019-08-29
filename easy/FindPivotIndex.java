@@ -2,28 +2,28 @@
 public class FindPivotIndex {
 	
     public static int pivotIndex(int[] numbers) {
-    		if (numbers == null) {
-    			throw new IllegalArgumentException("input must not be null");
-    		}
+		if (numbers == null) {
+			throw new IllegalArgumentException("input must not be null");
+		}
+	
+    	int prefixSum = 0;
+    	int suffixSum = 0;
     	
-	    	int prefixSum = 0;
-	    	int suffixSum = 0;
-	    	
-	    	for (int number : numbers) {
-	    		suffixSum += number;
-	    	}
-	    	
-	    	for (int i = 0; i < numbers.length; i++) {
-	    		suffixSum -= numbers[i];
-	    		
-	    		if (prefixSum == suffixSum) {
-	    			return i;
-	    		}
-	    		
-	    		prefixSum += numbers[i];
-	    	}
-	    	
-	    	return -1;
+    	for (int number : numbers) {
+    		suffixSum += number;
+    	}
+    	
+    	for (int i = 0; i < numbers.length; i++) {
+    		suffixSum -= numbers[i];
+    		
+    		if (prefixSum == suffixSum) {
+    			return i;
+    		}
+    		
+    		prefixSum += numbers[i];
+    	}
+    	
+    	return -1;
     }
 
 	public static void main(String[] args) {
