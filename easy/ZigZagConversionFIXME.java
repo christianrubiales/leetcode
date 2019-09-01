@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * FIXME
  */
-public class ZigZagConversion {
+public class ZigZagConversionFIXME {
 
     public String convert(String s, int nRows) {
     	String converted = "";
@@ -42,7 +42,7 @@ public class ZigZagConversion {
     }
     
 	public static void main(String[] args) {
-		ZigZagConversion conversion = new ZigZagConversion();
+		ZigZagConversionFIXME conversion = new ZigZagConversionFIXME();
 		System.out.println(conversion.convert("PAYPALISHIRING", 3)); // PAHNAPLSIIGYIR
 		System.out.println(conversion.convert("ABCD", 2)); // ACBD
 	}
